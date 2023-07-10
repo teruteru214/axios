@@ -39,11 +39,14 @@ const App = () => {
 
   const deleteUser = (id) => {
     axios
-      .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .delete(`https://jsonplaceholder.typicode.com/user/${id}`)
       .then((response) => {
         setUsers(users.filter((user) => user.id !== id)); // IDに一致しないユーザーだけを残すことでユーザーを削除
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log("エラーが発生");
+        console.log(error.response);
+      });
   };
 
   const modifyUser = (id) => {
